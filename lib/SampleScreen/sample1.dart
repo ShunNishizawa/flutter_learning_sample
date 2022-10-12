@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_sample/SampleScreen/sample2.dart';
+import 'package:flutter_learning_sample/sampleComponent/sampleButton.dart';
 
 class Sample1 extends StatefulWidget {
   const Sample1({Key? key}) : super(key: key);
@@ -8,6 +10,22 @@ class Sample1 extends StatefulWidget {
 }
 
 class _Sample1State extends State<Sample1> {
+  void getGreeting() async {
+    print('こんにちは！');
+    // Future(() {
+    //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+    //     return Sample2();
+    //   }));
+    // });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getGreeting();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +37,6 @@ class _Sample1State extends State<Sample1> {
           ),
         ),
       ),
-
       body: Container(
         child: SafeArea(
           child: Center(
@@ -30,7 +47,7 @@ class _Sample1State extends State<Sample1> {
               children: <Widget>[
                 Container(
                   color: Colors.deepOrange,
-                  height:80,
+                  height: 80,
                   width: 30,
                   child: const Text(
                     "テスト１",
@@ -41,24 +58,14 @@ class _Sample1State extends State<Sample1> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
-                  child: MaterialButton(
-                    onPressed: () {
-                      print('ボタンが押されました');
-                    },
-                    child: Container(
-                      color: Colors.purple,
-                      height: 120,
-                      width: 80,
-                      child: const Text(
-                        "テスト２",
-                        // テキストの位置を中央揃えにする›
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
+                  child: SampleButton(
+                    onPressed: (() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Sample2();
+                      }));
+                    }),
+                    title: 'テスト2',
                   ),
                 ),
               ],
