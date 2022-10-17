@@ -7,3 +7,7 @@
 
 ## deactivate
 - stateオブジェクトがツリーから削除するたびに呼び出される
+
+## ConstrainedBox
+- Widgetのサイズ調整ができる
+- BoxConstrainsクラスと共に使うと便利

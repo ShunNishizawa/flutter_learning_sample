@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_sample/SampleScreen/sample2.dart';
 import 'package:flutter_learning_sample/sampleComponent/sampleButton.dart';
+import 'package:flutter_learning_sample/sampleComponent/sampleIcon.dart';
 
 class Sample1 extends StatefulWidget {
   const Sample1({Key? key}) : super(key: key);
@@ -37,41 +39,32 @@ class _Sample1State extends State<Sample1> {
           ),
         ),
       ),
-      body: Container(
-        child: SafeArea(
-          child: Center(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.baseline,
-              textBaseline: TextBaseline.ideographic,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  color: Colors.deepOrange,
-                  height: 80,
-                  width: 30,
-                  child: const Text(
-                    "テスト１",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: SampleButton(
-                    onPressed: (() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return Sample2();
-                      }));
-                    }),
-                    title: 'テスト2',
-                  ),
-                ),
-              ],
+      body: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          GestureDetector(
+            onTap: () {
+              print('詳細画面');
+            },
+            child: SampleButton(
+              onTap: () {
+                print('smaple1');
+              },
+              title: 'TOEIC８００',
             ),
           ),
-        ),
+          GestureDetector(
+            onTap: () {
+              print('詳細画面２');
+            },
+            child: SampleButton(
+              onTap: () {
+                print('sample2');
+              },
+              title: 'TOEIC900',
+            ),
+          ),
+        ],
       ),
     );
   }
